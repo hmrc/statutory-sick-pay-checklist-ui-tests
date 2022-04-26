@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+object SicknessCausedByAccidentOrDisease extends BasePage {
 
-object CostOfGoods extends BasePage {
+  val sicknessCausedByAccidentOrDisease = "Was your sickness caused by an accident at work or an industrial disease?"
 
-  val costOfGoods      = "Enter your cost of goods - Check your VAT flat rate - GOV.UK"
-  val costOfGoodsInput = "costOfGoods"
-
-  def provideCostOfGoodsAmount(amount: String): this.type = {
-    onPage(costOfGoods)
-    driver.findElement(By.id(costOfGoodsInput)).sendKeys(amount)
-    this
-  }
-
-  def submitVATInformation: CheckYourVATResult.type = {
+  //TODO if selecting yes introduces an extra page then change this answer to yes
+  def selectNo: WhatIsYourPhoneNumber.type = {
+    onPage(sicknessCausedByAccidentOrDisease)
+    click("value-no")
     submitPage()
-    CheckYourVATResult
+    WhatIsYourPhoneNumber
   }
-
 }
