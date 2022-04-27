@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,28 +16,20 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-object CheckYourVATHomePage extends BasePage {
-  val url: String     = TestConfiguration.url("example-frontend") + "/vat-return-period"
-  val vatReturnPeriod = "Enter your VAT return details - Check your VAT flat rate - GOV.UK"
-
-  val annuallyRadioButton  = "vatReturnPeriod"
-  val quarterlyRadioButton = "vatReturnPeriod-2"
+object StatutorySickPayEmployerNotification extends BasePage {
+  val url: String               = TestConfiguration.url("statutory-sick-pay-checklist-frontend") + "/"
+  val statutorySickPayChecklist = "statutory-sick-pay-checklist-frontend"
 
   def loadPage: this.type = {
     driver.navigate().to(url)
-    onPage(vatReturnPeriod)
+    onPage(statutorySickPayChecklist)
     this
   }
 
-  def provideVATPeriod(period: String): Turnover.type = {
-    period match {
-      case "Annually" => driver.findElement(By.id(annuallyRadioButton)).click()
-      case _          => driver.findElement(By.id(quarterlyRadioButton)).click()
-    }
-    submitPage()
-    Turnover
+  def startApplication: WhatIsYourName.type = {
+    click("start")
+    WhatIsYourName
   }
 }

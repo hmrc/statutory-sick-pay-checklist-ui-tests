@@ -1,7 +1,5 @@
-**This is a template README.md.  Be sure to update this with project specific content that describes your ui test project.**
-
 # statutory-sick-pay-checklist-ui-tests
-UI test suite for the `<digital service name>` using WebDriver and `<scalatest/cucumber>`.  
+UI test suite for the statutory-sick-pay-checklist-frontend using WebDriver and scalatest.  
 
 ## Running the tests
 
@@ -13,6 +11,7 @@ Prior to executing the tests ensure you have:
 Run the following command to start services locally:
 
     docker run --rm -d --name mongo -d -p 27017:27017 mongo:4.0
+#TODO create profile and update
     sm --start PLATFORM_EXAMPLE_UI_TESTS -r --wait 100
 
 Using the `--wait 100` argument ensures a health check is run on all the services started as part of the profile. `100` refers to the given number of seconds to wait for services to pass health checks.
@@ -86,6 +85,16 @@ To execute ZAP tests locally using a remote-chrome browser
 
 `./run-browser-with-docker.sh` is **NOT** required when running in a CI environment.
 
+
+### Running accessibility tests locally
+
+ensure you don't already have an instance of a11y running in docker with command 'docker ps'
+if you do have a11y running in docker, use command 'docker stop a11y'
+if you have run these tests before, remove the a11yReport created in the previous test run
+execute './run_a11y_tests.sh'
+open 'a11yReport/accessibility-assessment-report.html' in browser
+
+
 ### Running tests using BrowserStack
 If you would like to run your tests via BrowserStack from your local development environment please refer to the [webdriver-factory](https://github.com/hmrc/webdriver-factory/blob/main/README.md/#user-content-running-tests-using-browser-stack) project.
 
@@ -119,6 +128,13 @@ See the `drivers/` directory for some helpful scripts to do the installation wor
 
  ```
  sbt scalafmtCheckAll scalafmtSbtCheck
+ ```
+
+To apply formatting to files in the project folder execute:
+
+ ```
+ sbt scalafmtSbt
+ 
  ```
 
 [Visit the official Scalafmt documentation to view a complete list of tasks which can be run.](https://scalameta.org/scalafmt/docs/installation.html#task-keys)

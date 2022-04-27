@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,17 +17,35 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
+import org.openqa.selenium.internal.FindsByClassName
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
+import scala.util.Random
+
 trait BasePage extends BrowserDriver with Matchers {
-  val continueButton = "continue-button"
+  val continueButton = "govuk-button"
+
+  def findByID(id: String) = driver.findElement(By.id(id))
+
+  def findByClassName(className: String) = driver.findElement(By.className(className))
+
+  def click(id: String) = findByID(id).click()
+
+  def enter(id: String, text: String) = findByID(id).sendKeys(text)
+
+  def enterDate(id: String) = {
+    findByID(id + ".day").sendKeys("1")
+    findByID(id + ".month").sendKeys("1")
+    findByID(id + ".year").sendKeys("2022")
+  }
+  val random = new Random
 
   def submitPage(): Unit =
-    driver.findElement(By.id(continueButton)).click()
+    findByClassName(continueButton).click()
 
   def onPage(pageTitle: String): Unit =
-    if (driver.getTitle != pageTitle)
+    if (driver.getTitle != pageTitle + " - statutory-sick-pay-checklist-frontend - GOV.UK")
       throw PageNotFoundException(
         s"Expected '$pageTitle' page, but found '${driver.getTitle}' page."
       )
