@@ -17,7 +17,6 @@
 package uk.gov.hmrc.test.ui.pages
 
 import org.openqa.selenium.By
-import org.openqa.selenium.internal.FindsByClassName
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
@@ -45,7 +44,7 @@ trait BasePage extends BrowserDriver with Matchers {
     findByClassName(continueButton).click()
 
   def onPage(pageTitle: String): Unit =
-    if (driver.getTitle != pageTitle + " - statutory-sick-pay-checklist-frontend - GOV.UK")
+    if (driver.getTitle != pageTitle + " - Ask your employer for statutory sick pay - GOV.UK")
       throw PageNotFoundException(
         s"Expected '$pageTitle' page, but found '${driver.getTitle}' page."
       )
