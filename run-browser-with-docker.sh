@@ -55,6 +55,7 @@ docker pull ${BROWSER} \
   -d \
   --rm \
   --name "${1}" \
+  --shm-size=2g \
   -p 4444:4444 \
   -p 5900:5900 \
   -e PORT_MAPPINGS="$port_mappings" \
