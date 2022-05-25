@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 object WhatIsYourPhoneNumber extends BasePage {
 
-  val whatIsYourPhoneNumber = "What is your phone number?"
+  val whatIsYourPhoneNumber = "What is your telephone number?"
 
   def providePhoneNumber: CheckYourAnswers.type = {
     onPage(whatIsYourPhoneNumber)
