@@ -21,10 +21,10 @@ object SicknessCausedByAccidentOrDisease extends BasePage {
   val sicknessCausedByAccidentOrDisease = "Was your sickness caused by an accident at work or an industrial disease?"
 
   //TODO if selecting yes introduces an extra page then change this answer to yes
-  def selectNo: WhatIsYourPhoneNumber.type = {
+  def selectNo: CheckYourAnswers.type = {
     onPage(sicknessCausedByAccidentOrDisease)
     click("value-no")
     submitPage()
-    WhatIsYourPhoneNumber
+    CheckYourAnswers
   }
 }

@@ -20,10 +20,10 @@ object WhatIsYourPhoneNumber extends BasePage {
 
   val whatIsYourPhoneNumber = "What is your phone number?"
 
-  def providePhoneNumber: CheckYourAnswers.type = {
+  def providePhoneNumber: SicknessDetails.type = {
     onPage(whatIsYourPhoneNumber)
     findByID("value").sendKeys("0777777777")
     submitPage()
-    CheckYourAnswers
+    SicknessDetails
   }
 }
