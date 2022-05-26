@@ -16,15 +16,14 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-object WhatIsYourName extends BasePage {
+object DoYouKnowYourNino extends BasePage {
 
-  val whatIsYourName = "What is your name?"
+  val doYouKnowYourNino = "Do you know your National Insurance number?"
 
-  def provideName: DoYouKnowYourNino.type = {
-    onPage(whatIsYourName)
-    findByID("firstname").sendKeys("John")
-    findByID("surname").sendKeys("Doe")
+  def selectYes: WhatIsYourNino.type = {
+    onPage(doYouKnowYourNino)
+    click("value")
     submitPage()
-    DoYouKnowYourNino
+    WhatIsYourNino
   }
 }
