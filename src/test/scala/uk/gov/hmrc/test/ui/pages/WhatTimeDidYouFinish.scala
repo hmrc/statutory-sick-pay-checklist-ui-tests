@@ -18,11 +18,11 @@ package uk.gov.hmrc.test.ui.pages
 
 object WhatTimeDidYouFinish extends BasePage {
 
-  val whatTimeDidYouFinish = "whatTimeDidYouFinish"
+  val whatTimeDidYouFinish = "What time did you finish work on 1 January 2022?"
 
   def provideFinishTime: SicknessCausedByAccidentOrDisease.type = {
     onPage(whatTimeDidYouFinish)
-    findByID("value").sendKeys("17:00")
+    findByID("value").sendKeys("5pm")
     submitPage()
     SicknessCausedByAccidentOrDisease
   }
