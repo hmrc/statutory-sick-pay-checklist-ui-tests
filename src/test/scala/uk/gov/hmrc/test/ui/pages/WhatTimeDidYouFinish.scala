@@ -21,7 +21,7 @@ object WhatTimeDidYouFinish extends BasePage {
   val whatTimeDidYouFinish = "What time did you finish work on 1 January 2022?"
 
   def provideFinishTime: SicknessCausedByAccidentOrDisease.type = {
-    onPage(whatTimeDidYouFinish)
+    onPage(whatTimeDidYouFinish, Some(Sections.employmentDetails))
     findByID("value").sendKeys("5pm")
     submitPage()
     SicknessCausedByAccidentOrDisease

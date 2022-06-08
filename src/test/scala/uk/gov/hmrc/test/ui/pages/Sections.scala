@@ -16,14 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-object SicknessCausedByAccidentOrDisease extends BasePage {
+object Sections {
 
-  val sicknessCausedByAccidentOrDisease = "Was your sickness caused by an accident at work or an industrial disease?"
-
-  def selectNo: CheckYourAnswers.type = {
-    onPage(sicknessCausedByAccidentOrDisease, Some(Sections.sicknessDetails))
-    click("value-no")
-    submitPage()
-    CheckYourAnswers
-  }
+  val personalDetails   = "Personal details"
+  val sicknessDetails   = "Sickness details"
+  val employmentDetails = "Employment details"
 }

@@ -21,7 +21,7 @@ object WhatIsYourDOB extends BasePage {
   val whatIsYourDOB = "What is your date of birth?"
 
   def provideDOB: DoYouKnowClockOrPayRollNumber.type = {
-    onPage(whatIsYourDOB)
+    onPage(whatIsYourDOB, Some(Sections.personalDetails))
     enterDate("value")
     submitPage()
     DoYouKnowClockOrPayRollNumber

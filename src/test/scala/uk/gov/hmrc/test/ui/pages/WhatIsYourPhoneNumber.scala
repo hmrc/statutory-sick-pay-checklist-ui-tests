@@ -21,7 +21,7 @@ object WhatIsYourPhoneNumber extends BasePage {
   val whatIsYourPhoneNumber = "What is your telephone number?"
 
   def providePhoneNumber: SicknessDetails.type = {
-    onPage(whatIsYourPhoneNumber)
+    onPage(whatIsYourPhoneNumber, Some(Sections.personalDetails))
     findByID("value").sendKeys("0777777777")
     submitPage()
     SicknessDetails

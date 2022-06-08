@@ -43,8 +43,12 @@ trait BasePage extends BrowserDriver with Matchers {
   def submitPage(): Unit =
     findByClassName(continueButton).click()
 
-  def onPage(pageTitle: String): Unit =
-    if (driver.getTitle != pageTitle + " - Ask your employer for statutory sick pay - GOV.UK")
+  def onPage(pageTitle: String, section: Option[String] = None): Unit =
+    if (
+      driver.getTitle != pageTitle + section
+        .map(" - " + _)
+        .getOrElse("") + " - Ask your employer for statutory sick pay - GOV.UK"
+    )
       throw PageNotFoundException(
         s"Expected '$pageTitle' page, but found '${driver.getTitle}' page."
       )

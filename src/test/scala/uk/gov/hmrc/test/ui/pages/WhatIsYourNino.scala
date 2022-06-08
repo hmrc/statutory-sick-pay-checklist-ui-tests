@@ -24,10 +24,9 @@ object WhatIsYourNino extends BasePage {
   private val ninoGenerator = new Generator(random)
 
   def provideNino: WhatIsYourDOB.type = {
-    onPage(whatIsYourNino)
+    onPage(whatIsYourNino, Some(Sections.personalDetails))
     findByID("value").sendKeys(ninoGenerator.nextNino.toString())
     submitPage()
     WhatIsYourDOB
   }
-
 }

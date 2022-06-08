@@ -21,7 +21,7 @@ object DoYouKnowYourNino extends BasePage {
   val doYouKnowYourNino = "Do you know your National Insurance number?"
 
   def selectYes: WhatIsYourNino.type = {
-    onPage(doYouKnowYourNino)
+    onPage(doYouKnowYourNino, Some(Sections.personalDetails))
     click("value")
     submitPage()
     WhatIsYourNino

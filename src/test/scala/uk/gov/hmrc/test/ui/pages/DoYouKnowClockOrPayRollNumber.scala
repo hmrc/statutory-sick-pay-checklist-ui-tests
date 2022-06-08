@@ -21,7 +21,7 @@ object DoYouKnowClockOrPayRollNumber extends BasePage {
   val doYouKnowClockOrPayRollNumber = "Do you know your clock or payroll number?"
 
   def selectYes: WhatIsYourClockOrPayrollNumber.type = {
-    onPage(doYouKnowClockOrPayRollNumber)
+    onPage(doYouKnowClockOrPayRollNumber, Some(Sections.employmentDetails))
     click("value")
     submitPage()
     WhatIsYourClockOrPayrollNumber
