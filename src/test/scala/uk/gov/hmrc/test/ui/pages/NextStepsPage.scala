@@ -16,13 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-object CheckYourAnswers extends BasePage {
+import org.openqa.selenium.By
 
-  val checkYourAnswers = "Check Your Answers"
+object NextStepsPage extends BasePage {
 
-  def submit: NextStepsPage.type = {
-    onPage(checkYourAnswers)
-    submitPage()
-    NextStepsPage
+  val nextSteps     = "Your application form is ready to send to your employer"
+  val resultOutcome = "download"
+
+  def result: String = {
+    onPage(nextSteps)
+    driver.findElement(By.id(resultOutcome)).getText
   }
 }
