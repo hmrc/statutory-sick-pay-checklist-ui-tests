@@ -21,7 +21,7 @@ object LastWorkBeforeSickness extends BasePage {
   val lastWorkBeforeSickness = "When did you last work before the sickness began?"
 
   def provideLastWorkDate: WhatTimeDidYouFinish.type = {
-    onPage(lastWorkBeforeSickness, Some(Sections.sicknessDetails))
+    onPage(lastWorkBeforeSickness, Some(Sections.employmentDetails))
     enterDate("value")
     submitPage()
     WhatTimeDidYouFinish

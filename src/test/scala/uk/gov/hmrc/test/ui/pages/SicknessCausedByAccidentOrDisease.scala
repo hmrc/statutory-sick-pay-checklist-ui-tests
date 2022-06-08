@@ -20,10 +20,10 @@ object SicknessCausedByAccidentOrDisease extends BasePage {
 
   val sicknessCausedByAccidentOrDisease = "Was your sickness caused by an accident at work or an industrial disease?"
 
-  def selectNo: CheckYourAnswers.type = {
+  def selectNo: LastWorkBeforeSickness.type = {
     onPage(sicknessCausedByAccidentOrDisease, Some(Sections.sicknessDetails))
     click("value-no")
     submitPage()
-    CheckYourAnswers
+    LastWorkBeforeSickness
   }
 }
