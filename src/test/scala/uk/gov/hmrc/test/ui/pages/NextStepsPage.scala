@@ -16,14 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-object SicknessEndDate extends BasePage {
+import org.openqa.selenium.By
 
-  val sicknessEndDate = "When did your sickness end?"
+object NextStepsPage extends BasePage {
 
-  def provideSicknessEndDate: SicknessCausedByAccidentOrDisease.type = {
-    onPage(sicknessEndDate, Some(Sections.sicknessDetails))
-    enterDate("value")
-    submitPage()
-    SicknessCausedByAccidentOrDisease
+  val nextSteps     = "Your application form is ready to send to your employer"
+  val resultOutcome = "download"
+
+  def result: String = {
+    onPage(nextSteps)
+    driver.findElement(By.id(resultOutcome)).getText
   }
 }

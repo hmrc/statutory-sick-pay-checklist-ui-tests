@@ -34,9 +34,7 @@ class JourneySpec extends BaseSpec {
 
       Then("I Check my Answers and submit")
       CheckYourAnswers.submit
-      //TODO when check your answers gets a submit button add to submit method and create next page object
-//      result should be()
-      //make a result method that returns a string for text comparison
+      NextStepsPage.result shouldBe "Download form"
     }
   }
 }

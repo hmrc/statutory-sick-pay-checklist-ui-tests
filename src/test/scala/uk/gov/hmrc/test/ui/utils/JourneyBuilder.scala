@@ -22,5 +22,5 @@ import uk.gov.hmrc.test.ui.pages.WhatIsYourName.provideName
 object JourneyBuilder {
 
   def answerAllQuestions: CheckYourAnswers.type =
-    provideName.selectYes.provideNino.provideDOB.selectYes.provideNumber.providePhoneNumber.provideSicknessDetails.provideSicknessStartDate.selectYes.provideSicknessEndDate.provideLastWorkDate.provideFinishTime.selectNo
+    provideName.selectYes.provideNino.provideDOB.providePhoneNumber.provideSicknessDetails.provideSicknessStartDate.selectYes.provideSicknessEndDate.selectNo.provideLastWorkDate.provideFinishTime.selectYes.provideNumber
 }

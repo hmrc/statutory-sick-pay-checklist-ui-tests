@@ -21,7 +21,7 @@ object HasSicknessEnded extends BasePage {
   val hasSicknessEnded = "Has your sickness ended?"
 
   def selectYes: SicknessEndDate.type = {
-    onPage(hasSicknessEnded)
+    onPage(hasSicknessEnded, Some(Sections.sicknessDetails))
     click("value")
     submitPage()
     SicknessEndDate

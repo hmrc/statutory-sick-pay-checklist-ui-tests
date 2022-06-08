@@ -20,10 +20,10 @@ object WhatIsYourClockOrPayrollNumber extends BasePage {
 
   val whatIsYourClockOrPayrollNumber = "What is your clock or payroll number?"
 
-  def provideNumber: WhatIsYourPhoneNumber.type = {
-    onPage(whatIsYourClockOrPayrollNumber)
+  def provideNumber: CheckYourAnswers.type = {
+    onPage(whatIsYourClockOrPayrollNumber, Some(Sections.employmentDetails))
     findByID("value").sendKeys("0000000")
     submitPage()
-    WhatIsYourPhoneNumber
+    CheckYourAnswers
   }
 }

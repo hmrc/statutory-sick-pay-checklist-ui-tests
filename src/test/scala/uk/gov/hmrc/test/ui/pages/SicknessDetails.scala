@@ -21,7 +21,7 @@ object SicknessDetails extends BasePage {
   val sicknessDetails = "Enter brief details of your sickness"
 
   def provideSicknessDetails: SicknessStartDate.type = {
-    onPage(sicknessDetails)
+    onPage(sicknessDetails, Some(Sections.sicknessDetails))
     findByID("value").sendKeys("Squirts")
     submitPage()
     SicknessStartDate

@@ -21,7 +21,7 @@ object WhatIsYourName extends BasePage {
   val whatIsYourName = "What is your name?"
 
   def provideName: DoYouKnowYourNino.type = {
-    onPage(whatIsYourName)
+    onPage(whatIsYourName, Some(Sections.personalDetails))
     findByID("firstname").sendKeys("John")
     findByID("surname").sendKeys("Doe")
     submitPage()

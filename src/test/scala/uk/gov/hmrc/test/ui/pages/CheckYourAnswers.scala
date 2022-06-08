@@ -20,9 +20,9 @@ object CheckYourAnswers extends BasePage {
 
   val checkYourAnswers = "Check Your Answers"
 
-  def submit: this.type = {
+  def submit: NextStepsPage.type = {
     onPage(checkYourAnswers)
-//    submitPage()
-    this
+    submitPage()
+    NextStepsPage
   }
 }

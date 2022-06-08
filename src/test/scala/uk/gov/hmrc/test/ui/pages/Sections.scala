@@ -16,14 +16,9 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-object SicknessEndDate extends BasePage {
+object Sections {
 
-  val sicknessEndDate = "When did your sickness end?"
-
-  def provideSicknessEndDate: SicknessCausedByAccidentOrDisease.type = {
-    onPage(sicknessEndDate, Some(Sections.sicknessDetails))
-    enterDate("value")
-    submitPage()
-    SicknessCausedByAccidentOrDisease
-  }
+  val personalDetails   = "Personal details"
+  val sicknessDetails   = "Sickness details"
+  val employmentDetails = "Employment details"
 }
