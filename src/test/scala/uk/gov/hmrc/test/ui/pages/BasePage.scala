@@ -20,6 +20,7 @@ import org.openqa.selenium.By
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
+import java.time.LocalDate
 import scala.util.Random
 
 trait BasePage extends BrowserDriver with Matchers {
@@ -33,10 +34,10 @@ trait BasePage extends BrowserDriver with Matchers {
 
   def enter(id: String, text: String) = findByID(id).sendKeys(text)
 
-  def enterDate(id: String) = {
-    findByID(id + ".day").sendKeys("1")
-    findByID(id + ".month").sendKeys("1")
-    findByID(id + ".year").sendKeys("2022")
+  def enterDate(id: String, date: LocalDate) = {
+    findByID(id + ".day").sendKeys(date.getDayOfMonth.toString)
+    findByID(id + ".month").sendKeys(date.getMonthValue.toString)
+    findByID(id + ".year").sendKeys(date.getYear.toString)
   }
   val random = new Random
 

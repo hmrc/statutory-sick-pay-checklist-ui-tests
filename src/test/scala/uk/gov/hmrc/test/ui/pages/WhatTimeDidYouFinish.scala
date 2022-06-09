@@ -16,9 +16,12 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import uk.gov.hmrc.test.ui.utils.dateFormatter
+
 object WhatTimeDidYouFinish extends BasePage {
 
-  val whatTimeDidYouFinish = "What time did you finish work on 1 January 2022?"
+  val whatTimeDidYouFinish =
+    s"What time did you finish work on ${dateFormatter.format(LastWorkBeforeSickness.lastWorkDay)}?"
 
   def provideFinishTime: DoYouKnowClockOrPayRollNumber.type = {
     onPage(whatTimeDidYouFinish, Some(Sections.employmentDetails))

@@ -14,18 +14,11 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.pages
+package uk.gov.hmrc.test.ui
 
-import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
-object SicknessEndDate extends BasePage {
+package object utils {
 
-  val sicknessEndDate = "When did your sickness end?"
-
-  def provideSicknessEndDate: SicknessCausedByAccidentOrDisease.type = {
-    onPage(sicknessEndDate, Some(Sections.sicknessDetails))
-    enterDate("value", LocalDate.now.minusDays(1))
-    submitPage()
-    SicknessCausedByAccidentOrDisease
-  }
+  val dateFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("d MMMM y")
 }

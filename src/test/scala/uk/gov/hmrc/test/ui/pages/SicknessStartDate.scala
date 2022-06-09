@@ -16,13 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import java.time.LocalDate
+
 object SicknessStartDate extends BasePage {
 
   val sicknessStartDate = "When did your sickness begin?"
 
   def provideSicknessStartDate: HasSicknessEnded.type = {
     onPage(sicknessStartDate, Some(Sections.sicknessDetails))
-    enterDate("value")
+    enterDate("value", LocalDate.now.minusDays(10))
     submitPage()
     HasSicknessEnded
   }
