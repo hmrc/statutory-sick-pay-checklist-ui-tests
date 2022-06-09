@@ -16,13 +16,16 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import java.time.LocalDate
+
 object LastWorkBeforeSickness extends BasePage {
 
   val lastWorkBeforeSickness = "When did you last work before the sickness began?"
+  val lastWorkDay            = LocalDate.now.minusDays(11)
 
   def provideLastWorkDate: WhatTimeDidYouFinish.type = {
     onPage(lastWorkBeforeSickness, Some(Sections.employmentDetails))
-    enterDate("value")
+    enterDate("value", lastWorkDay)
     submitPage()
     WhatTimeDidYouFinish
   }

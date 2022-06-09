@@ -16,13 +16,15 @@
 
 package uk.gov.hmrc.test.ui.pages
 
+import java.time.LocalDate
+
 object WhatIsYourDOB extends BasePage {
 
   val whatIsYourDOB = "What is your date of birth?"
 
   def provideDOB: WhatIsYourPhoneNumber.type = {
     onPage(whatIsYourDOB, Some(Sections.personalDetails))
-    enterDate("value")
+    enterDate("value", LocalDate.of(2000, 2, 1))
     submitPage()
     WhatIsYourPhoneNumber
   }
