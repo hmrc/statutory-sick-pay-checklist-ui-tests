@@ -18,7 +18,7 @@ package uk.gov.hmrc.test.ui.pages
 
 object CheckYourAnswers extends BasePage {
 
-  val checkYourAnswers = "Check Your Answers"
+  val checkYourAnswers = "Check your answers"
 
   def submit: NextStepsPage.type = {
     onPage(checkYourAnswers)
