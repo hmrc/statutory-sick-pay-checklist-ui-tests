@@ -48,7 +48,7 @@ trait BasePage extends BrowserDriver with Matchers {
     if (
       driver.getTitle != pageTitle + section
         .map(" - " + _)
-        .getOrElse("") + " - Ask your employer for statutory sick pay - GOV.UK"
+        .getOrElse("") + " - Ask your employer for Statutory Sick Pay - GOV.UK"
     )
       throw PageNotFoundException(
         s"Expected '$pageTitle' page, but found '${driver.getTitle}' page."

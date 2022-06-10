@@ -20,7 +20,7 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
 object StatutorySickPayEmployerNotification extends BasePage {
   val url: String               = TestConfiguration.url("statutory-sick-pay-checklist-frontend") + "/"
-  val statutorySickPayChecklist = "Ask your employer for statutory sick pay"
+  val statutorySickPayChecklist = "Ask your employer for Statutory Sick Pay"
 
   def loadPage: this.type = {
     driver.navigate().to(url)
