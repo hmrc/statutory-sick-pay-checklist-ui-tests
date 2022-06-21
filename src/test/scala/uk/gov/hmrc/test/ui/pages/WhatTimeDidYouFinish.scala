@@ -24,12 +24,12 @@ object WhatTimeDidYouFinish extends BasePage {
   val whatTimeDidYouFinish =
     s"What time did you finish work on ${dateFormatter.format(LastWorkBeforeSickness.lastWorkDay)}?"
 
-  val timeFinished: Select = new Select(findByID("time-finished-ampm"))
+  val timeFinished: Select = new Select(findByID("time-finished.ampm"))
 
   def provideFinishTime: DoYouKnowClockOrPayRollNumber.type = {
     onPage(whatTimeDidYouFinish, Some(Sections.employmentDetails))
-    findByID("time-finished-hour").sendKeys("5")
-    findByID("time-finished-minute").sendKeys("30")
+    findByID("time-finished.hour").sendKeys("5")
+    findByID("time-finished.minute").sendKeys("30")
     timeFinished.selectByVisibleText("pm")
     submitPage()
     DoYouKnowClockOrPayRollNumber
