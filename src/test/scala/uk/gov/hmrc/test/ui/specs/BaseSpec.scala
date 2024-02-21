@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,32 +21,25 @@ import org.scalatest.concurrent.Eventually
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.selenium.WebBrowser
-import uk.gov.hmrc.test.ui.driver.BrowserDriver
-import uk.gov.hmrc.webdriver.SingletonDriver
-
-import scala.util.Try
+import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 
 trait BaseSpec
     extends AnyFeatureSpec
     with GivenWhenThen
-    with BeforeAndAfterAll
+    with BeforeAndAfterEach
     with Matchers
     with WebBrowser
-    with BrowserDriver
+    with Browser
+    with ScreenshotOnFailure
     with Eventually {
 
-  override def afterAll() {
-    Try(SingletonDriver.closeInstance)
+  override def beforeEach(): Unit = {
+    super.beforeEach()
+    startBrowser()
   }
 
-  override def withFixture(test: NoArgTest): Outcome = {
-    val fixture = super.withFixture(test)
-    if (!fixture.isSucceeded) {
-      val screenshotName = test.name.replaceAll(" ", "_").replaceAll(":", "") + ".png"
-      setCaptureDir("./target/test-reports/html-report/screenshots/")
-      capture to screenshotName
-      markup(s"<img src='screenshots/$screenshotName' />")
-    }
-    fixture
+  override def afterEach(): Unit = {
+    quitBrowser()
+    super.afterEach()
   }
 }
