@@ -27,7 +27,7 @@ class JourneySpec extends BaseSpec {
     Scenario("Answer all questions for statutory sick pay", ZapTests) {
 
       Given("I Start the Statutory Sick Pay Employer Notification Journey")
-      StatutorySickPayEmployerNotification.loadPage.startApplication
+      StartPage.loadPage()
 
       When("I provide all details")
       answerAllQuestions
