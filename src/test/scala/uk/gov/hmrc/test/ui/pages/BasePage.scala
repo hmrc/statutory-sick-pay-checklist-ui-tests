@@ -16,11 +16,12 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+import org.openqa.selenium.{By, StaleElementReferenceException, WebDriver}
+import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, Wait}
 import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.test.ui.driver.BrowserDriver
 
-import java.time.LocalDate
+import java.time.{Duration, LocalDate}
 import scala.util.Random
 
 trait BasePage extends BrowserDriver with Matchers {
@@ -44,15 +45,22 @@ trait BasePage extends BrowserDriver with Matchers {
   def submitPage(): Unit =
     findByClassName(continueButton).click()
 
-  def onPage(pageTitle: String, section: Option[String] = None): Unit =
-    if (
-      driver.getTitle != pageTitle + section
-        .map(" - " + _)
-        .getOrElse("") + " - Ask your employer for Statutory Sick Pay - GOV.UK"
-    )
-      throw PageNotFoundException(
-        s"Expected '$pageTitle' page, but found '${driver.getTitle}' page."
-      )
+  def onPage(pageTitle: String, section: Option[String] = None): Unit = {
+
+    val expectedTitle = pageTitle + section
+      .map(" - " + _)
+      .getOrElse("") + " - Ask your employer for Statutory Sick Pay - GOV.UK"
+
+    fluentWait.until(ExpectedConditions.titleIs(expectedTitle)) shouldBe true
+
+  }
+
+  private def fluentWait: Wait[WebDriver] =
+    new FluentWait[WebDriver](driver)
+      .withTimeout(Duration.ofSeconds(5))
+      .pollingEvery(Duration.ofMillis(250))
+      .ignoring(classOf[NoSuchElementException])
+      .ignoring(classOf[StaleElementReferenceException])
 }
 
 case class PageNotFoundException(s: String) extends Exception(s)

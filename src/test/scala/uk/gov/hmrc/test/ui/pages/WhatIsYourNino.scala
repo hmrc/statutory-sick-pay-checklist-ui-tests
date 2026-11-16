@@ -16,12 +16,12 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import uk.gov.hmrc.domain.Generator
+import uk.gov.hmrc.domain.NinoGenerator
 
 object WhatIsYourNino extends BasePage {
 
   val whatIsYourNino        = "What is your National Insurance number?"
-  private val ninoGenerator = new Generator(random)
+  private val ninoGenerator = new NinoGenerator(random)
 
   def provideNino: WhatIsYourDOB.type = {
     onPage(whatIsYourNino, Some(Sections.personalDetails))
